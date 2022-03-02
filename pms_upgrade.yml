@@ -1,0 +1,6 @@
+  - hosts : hosts
+    become: yes
+    gather_facts: false
+    tasks:
+    - name: Go to pms directory
+      commande: chdir=/home/ubuntu/projet_bbr make upgrade
