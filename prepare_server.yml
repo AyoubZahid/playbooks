@@ -1,6 +1,6 @@
-  - hosts : hosts
+  - hosts : vps5
     become: yes
-    gather_facts: false
+    gather_facts: true
     tasks:
     - name: Install git
       apt:
@@ -65,8 +65,14 @@
         dest: /usr/local/bin/docker-compose
         mode: 'u+x,g+x'
 
+    - name: Install nginx
+      apt:
+        name: ['nginx']
+        state: present
+        update_cache: yes
 
-
-
-
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
 
